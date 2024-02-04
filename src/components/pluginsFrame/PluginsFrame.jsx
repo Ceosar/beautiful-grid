@@ -3,9 +3,6 @@ import "./PluginsFrame.css"
 import Toolbar from './toolbar/Toolbar';
 import Frame from './frame/Frame';
 import { DragDropContext } from 'react-beautiful-dnd';
-import { Responsive, WidthProvider } from 'react-grid-layout';
-
-const ResponsiveGridLayout = WidthProvider(Responsive);
 
 const PluginsFrame = () => {
     const [allPlugins, setAllPlugins] = useState([
@@ -101,17 +98,9 @@ const PluginsFrame = () => {
         <div className='plugins-frame_wrapper'>
             <DragDropContext onDragEnd={onDragEnd}>
                 <div className='frame_wrapper'>
-                    <ResponsiveGridLayout
-                        className="layout"
-                        breakpoints={{ lg: 1200, md: 996, sm: 768, xs: 480, xxs: 0 }}
-                        cols={{ lg: 12, md: 10, sm: 6, xs: 4, xxs: 2 }}
-                        rowHeight={30}
-                        isDraggable={true}
-                    >
-                        {frames.map((frame, index) => (
-                            <Frame key={index} plugins={frame} frameIndex={index} />
-                        ))}
-                    </ResponsiveGridLayout>
+                    {frames.map((frame, index) => (
+                        <Frame key={index} plugins={frame} frameIndex={index} />
+                    ))}
                 </div>
                 <Toolbar plugins={pluginOff} />
             </DragDropContext>

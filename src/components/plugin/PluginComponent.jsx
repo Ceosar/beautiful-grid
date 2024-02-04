@@ -1,8 +1,8 @@
-import React, { forwardRef } from 'react';
+import React from 'react';
 import "./PluginComponent.css"
 import { Draggable } from 'react-beautiful-dnd';
 
-const PluginComponent =  forwardRef(({ plugins, index, isSelected, onSelect, className, isOnFrame })) => {
+const PluginComponent = ({ plugins, index, isSelected, onSelect, className, isOnFrame }) => {
     let dayToday = new Date();
     dayToday.setHours(0, 0, 0, 0);
     let currentDay = dayToday.getDate();
@@ -20,7 +20,6 @@ const PluginComponent =  forwardRef(({ plugins, index, isSelected, onSelect, cla
                     {...provided.draggableProps}
                     {...provided.dragHandleProps}
                     onClick={onSelect}
-                    ref={ref}
                 >
                     {isOnFrame ? (
                         <div className='plugin-component-on'>
